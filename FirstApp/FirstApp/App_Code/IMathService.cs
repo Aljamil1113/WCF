@@ -17,6 +17,9 @@ public interface IMathService
 	[OperationContract]
 	Complex AddComplex(Complex c1, Complex c2);
 
+	[OperationContract]
+	int GetCounter();
+
 	// TODO: Add your service operations here
 }
 

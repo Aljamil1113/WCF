@@ -89,6 +89,12 @@ namespace FirstAppClient.localhost {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMathService/AddComplex", ReplyAction="http://tempuri.org/IMathService/AddComplexResponse")]
         System.Threading.Tasks.Task<FirstAppClient.localhost.Complex> AddComplexAsync(FirstAppClient.localhost.Complex c1, FirstAppClient.localhost.Complex c2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMathService/GetCounter", ReplyAction="http://tempuri.org/IMathService/GetCounterResponse")]
+        int GetCounter();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMathService/GetCounter", ReplyAction="http://tempuri.org/IMathService/GetCounterResponse")]
+        System.Threading.Tasks.Task<int> GetCounterAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -132,6 +138,14 @@ namespace FirstAppClient.localhost {
         
         public System.Threading.Tasks.Task<FirstAppClient.localhost.Complex> AddComplexAsync(FirstAppClient.localhost.Complex c1, FirstAppClient.localhost.Complex c2) {
             return base.Channel.AddComplexAsync(c1, c2);
+        }
+        
+        public int GetCounter() {
+            return base.Channel.GetCounter();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetCounterAsync() {
+            return base.Channel.GetCounterAsync();
         }
     }
 }

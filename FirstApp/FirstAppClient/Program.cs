@@ -12,6 +12,7 @@ namespace FirstAppClient
         {
             localhost.MathServiceClient mc = new localhost.MathServiceClient();
             Console.WriteLine(mc.Add(10, 20));
+            Console.WriteLine(mc.Add(10, 20));
             localhost.Complex c1 = new FirstAppClient.localhost.Complex();
             localhost.Complex c2 = new FirstAppClient.localhost.Complex();
             c1.Real = 10; c2.Real = 20;
@@ -19,6 +20,8 @@ namespace FirstAppClient
             localhost.Complex c3 = mc.AddComplex(c1, c2);
             Console.WriteLine(c3.Real + " " + c3.Imag);
 
+            Console.WriteLine(mc.GetCounter());
+           
             Console.ReadLine();
         }
     }
