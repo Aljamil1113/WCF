@@ -9,6 +9,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Employee" nillable="true" type="tns:Employee" />
+  <xs:complexType name="DevelopmentEmployee">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Employee">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProgrammingLanguage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DevelopmentEmployee" nillable="true" type="tns:DevelopmentEmployee" />
+  <xs:complexType name="TraineeEmployees">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Employee">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TraineeEmployees" nillable="true" type="tns:TraineeEmployees" />
   <xs:complexType name="ArrayOfEmployee">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Employee" nillable="true" type="tns:Employee" />

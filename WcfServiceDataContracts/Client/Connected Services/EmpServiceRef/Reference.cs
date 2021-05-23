@@ -17,6 +17,8 @@ namespace Client.EmpServiceRef {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Employee", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceDataContracts")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.EmpServiceRef.DevelopmentEmployee))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.EmpServiceRef.TraineeEmployees))]
     public partial class Employee : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -105,15 +107,61 @@ namespace Client.EmpServiceRef {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DevelopmentEmployee", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceDataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DevelopmentEmployee : Client.EmpServiceRef.Employee {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProgrammingLanguageField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProgrammingLanguage {
+            get {
+                return this.ProgrammingLanguageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProgrammingLanguageField, value) != true)) {
+                    this.ProgrammingLanguageField = value;
+                    this.RaisePropertyChanged("ProgrammingLanguage");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TraineeEmployees", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceDataContracts")]
+    [System.SerializableAttribute()]
+    public partial class TraineeEmployees : Client.EmpServiceRef.Employee {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubjectField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Subject {
+            get {
+                return this.SubjectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubjectField, value) != true)) {
+                    this.SubjectField = value;
+                    this.RaisePropertyChanged("Subject");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.deccansoft.com/wcf", ConfigurationName="EmpServiceRef.IEmpService")]
     public interface IEmpService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/InsertEmp", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/InsertEmpResponse")]
-        void InsertEmp(string name, decimal salary, System.DateTime dob);
+        void InsertEmp(Client.EmpServiceRef.Employee e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/InsertEmp", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/InsertEmpResponse")]
-        System.Threading.Tasks.Task InsertEmpAsync(string name, decimal salary, System.DateTime dob);
+        System.Threading.Tasks.Task InsertEmpAsync(Client.EmpServiceRef.Employee e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/UpdateEmp", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/UpdateEmpResponse")]
         void UpdateEmp(Client.EmpServiceRef.Employee e);
@@ -127,11 +175,11 @@ namespace Client.EmpServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/DeleteEmp", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/DeleteEmpResponse")]
         System.Threading.Tasks.Task DeleteEmpAsync(Client.EmpServiceRef.Employee e);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/GetData", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/GetDataResponse")]
-        Client.EmpServiceRef.Employee[] GetData();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/GetEmployees", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/GetEmployeesResponse")]
+        Client.EmpServiceRef.Employee[] GetEmployees();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/GetData", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/GetDataResponse")]
-        System.Threading.Tasks.Task<Client.EmpServiceRef.Employee[]> GetDataAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/GetEmployees", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/GetEmployeesResponse")]
+        System.Threading.Tasks.Task<Client.EmpServiceRef.Employee[]> GetEmployeesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.deccansoft.com/wcf/IEmpService/GetEmpDetails", ReplyAction="http://www.deccansoft.com/wcf/IEmpService/GetEmpDetailsResponse")]
         Client.EmpServiceRef.Employee GetEmpDetails(int empId);
@@ -167,12 +215,12 @@ namespace Client.EmpServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public void InsertEmp(string name, decimal salary, System.DateTime dob) {
-            base.Channel.InsertEmp(name, salary, dob);
+        public void InsertEmp(Client.EmpServiceRef.Employee e) {
+            base.Channel.InsertEmp(e);
         }
         
-        public System.Threading.Tasks.Task InsertEmpAsync(string name, decimal salary, System.DateTime dob) {
-            return base.Channel.InsertEmpAsync(name, salary, dob);
+        public System.Threading.Tasks.Task InsertEmpAsync(Client.EmpServiceRef.Employee e) {
+            return base.Channel.InsertEmpAsync(e);
         }
         
         public void UpdateEmp(Client.EmpServiceRef.Employee e) {
@@ -191,12 +239,12 @@ namespace Client.EmpServiceRef {
             return base.Channel.DeleteEmpAsync(e);
         }
         
-        public Client.EmpServiceRef.Employee[] GetData() {
-            return base.Channel.GetData();
+        public Client.EmpServiceRef.Employee[] GetEmployees() {
+            return base.Channel.GetEmployees();
         }
         
-        public System.Threading.Tasks.Task<Client.EmpServiceRef.Employee[]> GetDataAsync() {
-            return base.Channel.GetDataAsync();
+        public System.Threading.Tasks.Task<Client.EmpServiceRef.Employee[]> GetEmployeesAsync() {
+            return base.Channel.GetEmployeesAsync();
         }
         
         public Client.EmpServiceRef.Employee GetEmpDetails(int empId) {

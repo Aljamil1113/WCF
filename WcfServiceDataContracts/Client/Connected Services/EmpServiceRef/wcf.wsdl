@@ -25,11 +25,11 @@
   <wsdl:message name="IEmpService_DeleteEmp_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEmpResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmpService_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
+  <wsdl:message name="IEmpService_GetEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployees" />
   </wsdl:message>
-  <wsdl:message name="IEmpService_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  <wsdl:message name="IEmpService_GetEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesResponse" />
   </wsdl:message>
   <wsdl:message name="IEmpService_GetEmpDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmpDetails" />
@@ -50,9 +50,9 @@
       <wsdl:input wsaw:Action="http://www.deccansoft.com/wcf/IEmpService/DeleteEmp" message="tns:IEmpService_DeleteEmp_InputMessage" />
       <wsdl:output wsaw:Action="http://www.deccansoft.com/wcf/IEmpService/DeleteEmpResponse" message="tns:IEmpService_DeleteEmp_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://www.deccansoft.com/wcf/IEmpService/GetData" message="tns:IEmpService_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://www.deccansoft.com/wcf/IEmpService/GetDataResponse" message="tns:IEmpService_GetData_OutputMessage" />
+    <wsdl:operation name="GetEmployees">
+      <wsdl:input wsaw:Action="http://www.deccansoft.com/wcf/IEmpService/GetEmployees" message="tns:IEmpService_GetEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.deccansoft.com/wcf/IEmpService/GetEmployeesResponse" message="tns:IEmpService_GetEmployees_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEmpDetails">
       <wsdl:input wsaw:Action="http://www.deccansoft.com/wcf/IEmpService/GetEmpDetails" message="tns:IEmpService_GetEmpDetails_InputMessage" />

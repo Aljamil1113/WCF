@@ -11,9 +11,11 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            EmpServiceClient sc = new EmpServiceClient();
-            sc.InsertEmp("Sandeep", 10000, new DateTime(DateTime.Now.Ticks));
-            sc.UpdateEmp(new Employee() { empId = 1, EmpName = "E1", EmpSalary = 10000, DateOfBirth = DateTime.Now });
+            EmpServiceClient sc = new EmpServiceClient();  
+            Employee DEmployee = new DevelopmentEmployee { empId = 1, EmpName = "D1", EmpSalary = 12000, DateOfBirth = DateTime.Now, ProgrammingLanguage = ".NET" };
+            Employee TEmployee = new TraineeEmployees { empId = 2, EmpName = "T1", EmpSalary = 12000, DateOfBirth = DateTime.Now, Subject = "C#"};
+            sc.InsertEmp(DEmployee);
+            sc.UpdateEmp(TEmployee);
             Console.ReadKey(); ;
         }
     }

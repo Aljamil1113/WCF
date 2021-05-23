@@ -12,10 +12,11 @@ namespace WcfServiceDataContracts
     {
         public void DeleteEmp(Employee e)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Emp deleted with following details.");
+            Console.WriteLine("ID: {0}", e.empId);
         }
 
-        public Employee[] GetData()
+        public Employee[] GetEmployees()
         {
             throw new NotImplementedException();
         }
@@ -30,17 +31,46 @@ namespace WcfServiceDataContracts
             };
         }
 
-        public void InsertEmp(string name, decimal salary, DateTime dob)
+        public void InsertEmp(Employee e)
         {
-            Console.WriteLine("Name: {0}, Salary: {1}, DOB: {2}", name, salary, dob);
-            Console.WriteLine("Employee saved!");
+            if(e is TraineeEmployees)
+            {
+                Console.WriteLine("Emp Inserted (Training) with following details");
+                Console.WriteLine("Name: {0}, Salary: {1}, DateOfBirth:{2:d}, Subject: {3}", e.EmpName, e.EmpSalary, e.DateOfBirth, ((TraineeEmployees)e).Subject);
+            }
+
+            else if(e is DevelopmentEmployee)
+            {
+                Console.WriteLine("Emp Inserted (Delelopment) with following details");
+                Console.WriteLine("Name: {0}, Salary: {1}, Date Of Birth:{2:d}, Programming Language: {3}", e.EmpName, e.EmpSalary, e.DateOfBirth, ((DevelopmentEmployee)e).ProgrammingLanguage);
+            }
+
+            else
+            {
+                Console.WriteLine("Emp Inserted with following details");
+                Console.WriteLine("Name: {0}, Salary: {1}, DOB: {2}", e.EmpName, e.EmpSalary, e.DateOfBirth);
+            }
         }
 
         public void UpdateEmp(Employee e)
         {
-            Console.WriteLine("ID: {0}, Name: {1}, Salary: {2}, DOB: {3}", 
-                e.empId, e.EmpName, e.EmpSalary, e.DateOfBirth);
-            Console.WriteLine("Emp Updated");
+            if (e is TraineeEmployees)
+            {
+                Console.WriteLine("Emp Updated (Training) with following details");
+                Console.WriteLine("Name: {0}, Salary: {1}, DateOfBirth:{2:d}, Subject: {3}", e.EmpName, e.EmpSalary, e.DateOfBirth, ((TraineeEmployees)e).Subject);
+            }
+
+            else if (e is DevelopmentEmployee)
+            {
+                Console.WriteLine("Emp Updated(Delelopment) with following details");
+                Console.WriteLine("Name: {0}, Salary: {1}, Date Of Birth:{2:d}, Programming Language: {3}", e.EmpName, e.EmpSalary, e.DateOfBirth, ((DevelopmentEmployee)e).ProgrammingLanguage);
+            }
+
+            else
+            {
+                Console.WriteLine("Emp Updated with following details");
+                Console.WriteLine("Name: {0}, Salary: {1}, Date of Birth: {2}", e.EmpName, e.EmpSalary, e.DateOfBirth);
+            }
         }
     }
 }

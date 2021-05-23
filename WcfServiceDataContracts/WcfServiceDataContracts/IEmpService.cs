@@ -9,10 +9,12 @@ namespace WcfServiceDataContracts
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract(Name = "IEmpService", Namespace = "http://www.deccansoft.com/wcf")]
+    //[ServiceKnownType(typeof(DevelopmentEmployee))]
+    //[ServiceKnownType(typeof(TraineeEmployees))]
     public interface IEmpService
     {
         [OperationContract]
-        void InsertEmp(string name, decimal salary, DateTime dob);
+        void InsertEmp(Employee e);
 
         [OperationContract]
         void UpdateEmp(Employee e);
@@ -21,7 +23,7 @@ namespace WcfServiceDataContracts
         void DeleteEmp(Employee e);
 
         [OperationContract]
-        Employee[] GetData();
+        Employee[] GetEmployees();
 
         [OperationContract]
         Employee GetEmpDetails(int empId); 
@@ -32,6 +34,8 @@ namespace WcfServiceDataContracts
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "WcfServiceDataContracts.ContractType".
     [DataContract]
+    //[KnownType(typeof(TraineeEmployees))]
+    //[KnownType(typeof(DevelopmentEmployee))]
     public class Employee
     {
       [DataMember()]
@@ -45,5 +49,19 @@ namespace WcfServiceDataContracts
 
       [DataMember(IsRequired =true)]
         public DateTime DateOfBirth { get; set; }
+    }
+
+    [DataContract]
+    public class DevelopmentEmployee : Employee
+    {
+        [DataMember]
+        public string ProgrammingLanguage { get; set; }
+    }
+
+    [DataContract]
+    public class TraineeEmployees : Employee
+    {
+        [DataMember()]
+        public string Subject { get; set; }
     }
 }
